@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Emit;
+//I don't know what this is but it seems useful so I haven't deleted it
 
 //Initialize most variables here
 int affection = 0;
@@ -11,23 +12,9 @@ string affectionPhrase = null;
 if (affection == 0)
 {
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-} else if (affection >= 1)
-{
-    affectionPhrase = "The cat is a bit interested in you.";
-} else if (affection >= 4)
-{
-    affectionPhrase = "The cat is being friendlier to you.";
-} else if (affection >= 7)
-{
-    affectionPhrase = "You are liked by the cat";
-} else if (affection >= 10)
-{
-    affectionPhrase = "You've befriended the cat.";
-} else if (affection >= 100)
-{
-    affectionPhrase = "the cat fws you heavy vro.";
 }
 
+//Start of game
 Console.WriteLine("DEV: Welcome to my interactive terminal game. Your task is to befriend this digital cat.");
 Console.WriteLine("DEV: You are equipped with cat treats and a toy. Good luck.");
 Console.WriteLine("SYSTEM: The cat approaches you with a minor amount of curiosity. Try to gain its attention.");
@@ -35,23 +22,489 @@ Console.WriteLine("OPTION: You may choose to STAND still, WALK towards it, or CR
 string firstChoice = Console.ReadLine();
 if (firstChoice == "STAND")
 {
-    Console.WriteLine("SYSTEM: You chose to stand still as the cat approaches. It circles your legs and decides to stay with you for a bit.");
-    correctChoice = true;
-} else if (firstChoice == "WALK")
-{
-    Console.WriteLine("SYSTEM: You chose to walk towards the cat. It decides to walk away from you.");
-    correctChoice = false;
-} else if (firstChoice == "CROUCH")
-{
-    Console.WriteLine("SYSTEM: You chose to crouch down as the cat approaches you. It walks up to you and decides to stay with you for a bit.");
+    Console.WriteLine("ACTION: You chose to stand still as the cat approaches. It circles your legs and decides to stay with you for a bit.");
     correctChoice = true;
 }
+else if (firstChoice == "WALK")
+{
+    Console.WriteLine("ACTION: You chose to walk towards the cat. It decides to walk away from you.");
+    correctChoice = false;
+}
+else if (firstChoice == "CROUCH")
+{
+    Console.WriteLine("ACTION: You chose to crouch down as the cat approaches you. It walks up to you and decides to stay with you for a bit.");
+    correctChoice = true;
+}
+
+//Action 1
 if (correctChoice == true)
 {
     Console.WriteLine("SYSTEM: Congratulations. You've gained the cat's attention. Now try befriending it.");
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
 
 } else if (correctChoice == false)
 {
     Console.WriteLine("SYSTEM: You have failed. The game is now terminating. Good luck next time.");
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+
+//Action 2
+if (actions == 9)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+
+//Action 3
+if (actions == 8)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+
+//Action 4
+if (actions == 7)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+
+//Action 5
+if (actions == 6)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "DsakopsNdas")
+    {
+        affection = 1000;
+        Console.WriteLine("DEV: okay vro");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 11)
+{
+    affectionPhrase = "You've befriended the cat.";
+}
+else if (affection >= 100)
+{
+    affectionPhrase = "the cat fws you heavy vro.";
+}
+
+//Action 6
+if (actions == 5)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 11)
+{
+    affectionPhrase = "You've befriended the cat.";
+}
+else if (affection >= 100)
+{
+    affectionPhrase = "the cat fws you heavy vro.";
+}
+
+//Action 7
+if (actions == 4)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Action 8
+if (actions == 3)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 11)
+{
+    affectionPhrase = "You've befriended the cat.";
+}
+else if (affection >= 100)
+{
+    affectionPhrase = "the cat fws you heavy vro.";
+}
+
+//Action 9
+if (actions == 2)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+    actions--;
+}
+
+//Set affectionPhrase based on current level of affection
+if (affection >= 100)
+{
+    affectionPhrase = "the cat fws you heavy vro.";
+}
+else if (affection >= 11)
+{
+    affectionPhrase = "You've befriended the cat.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 5)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+
+//Action 10
+if (actions == 1)
+{
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    playerAction = Console.ReadLine();
+    if (playerAction == "FEED")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PLAY")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "PET")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else if (playerAction == "SCRATCH")
+    {
+        Console.WriteLine($"ACTION: You chose to {playerAction}.");
+    }
+    else
+    {
+        Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
+    }
+        actions--;
+}
+
+//Finale
+if (actions == 0)
+{
+    Console.WriteLine("SYSTEM: You have no actions left. Let's see if you befriended the cat enough to take it home.");
+    if (affection >= 11)
+    {
+        Console.WriteLine("SUCCESS: You successfully befriended the cat!");
+    }
+    else if (affection >= 5)
+    {
+        Console.WriteLine("FAILURE: The cat seemed to like you a bit but didn't really care.");
+    }
+    else if (affection >= 0)
+    {
+        Console.WriteLine("FAILURE: The cat got bored and walked away.");
+    }
 }
