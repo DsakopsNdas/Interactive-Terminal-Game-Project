@@ -7,12 +7,7 @@ int actions = 10;
 bool correctChoice = false;
 string playerAction;
 string affectionPhrase = null;
-
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
-{
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
+int treatsFed = 0;
 
 //Start of game
 Console.WriteLine("DEV: Welcome to my interactive terminal game. Your task is to befriend this digital cat.");
@@ -34,6 +29,12 @@ else if (firstChoice == "CROUCH")
 {
     Console.WriteLine("ACTION: You chose to crouch down as the cat approaches you. It walks up to you and decides to stay with you for a bit.");
     correctChoice = true;
+}
+
+//Set affectionPhrase based on current level of affection before every action
+if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 1
@@ -70,20 +71,21 @@ if (correctChoice == true)
     Console.WriteLine("SYSTEM: You have failed. The game is now terminating. Good luck next time.");
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
-{
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
-else if (affection >= 1)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 1)
 {
     affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 2
 if (actions == 9)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -108,24 +110,26 @@ if (actions == 9)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 4)
 {
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+    affectionPhrase = "The cat is being friendlier to you.";
 }
 else if (affection >= 1)
 {
     affectionPhrase = "The cat is a bit interested in you.";
 }
-else if (affection >= 4)
+else if (affection == 0)
 {
-    affectionPhrase = "The cat is being friendlier to you.";
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
+
 
 //Action 3
 if (actions == 8)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -150,28 +154,29 @@ if (actions == 8)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 7)
 {
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
-else if (affection >= 1)
-{
-    affectionPhrase = "The cat is a bit interested in you.";
+    affectionPhrase = "You are liked by the cat";
 }
 else if (affection >= 4)
 {
     affectionPhrase = "The cat is being friendlier to you.";
 }
-else if (affection >= 7)
+else if (affection >= 1)
 {
-    affectionPhrase = "You are liked by the cat";
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 4
 if (actions == 7)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -196,28 +201,29 @@ if (actions == 7)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 7)
 {
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
-else if (affection >= 1)
-{
-    affectionPhrase = "The cat is a bit interested in you.";
+    affectionPhrase = "You are liked by the cat";
 }
 else if (affection >= 4)
 {
     affectionPhrase = "The cat is being friendlier to you.";
 }
-else if (affection >= 7)
+else if (affection >= 1)
 {
-    affectionPhrase = "You are liked by the cat";
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 5
 if (actions == 6)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -247,36 +253,37 @@ if (actions == 6)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 100)
 {
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
-else if (affection >= 1)
-{
-    affectionPhrase = "The cat is a bit interested in you.";
-}
-else if (affection >= 4)
-{
-    affectionPhrase = "The cat is being friendlier to you.";
-}
-else if (affection >= 7)
-{
-    affectionPhrase = "You are liked by the cat";
+    affectionPhrase = "the cat fws you heavy vro.";
 }
 else if (affection >= 11)
 {
     affectionPhrase = "You've befriended the cat.";
 }
-else if (affection >= 100)
+else if (affection >= 7)
 {
-    affectionPhrase = "the cat fws you heavy vro.";
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 6
 if (actions == 5)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -301,36 +308,37 @@ if (actions == 5)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 100)
 {
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
-else if (affection >= 1)
-{
-    affectionPhrase = "The cat is a bit interested in you.";
-}
-else if (affection >= 4)
-{
-    affectionPhrase = "The cat is being friendlier to you.";
-}
-else if (affection >= 7)
-{
-    affectionPhrase = "You are liked by the cat";
+    affectionPhrase = "the cat fws you heavy vro.";
 }
 else if (affection >= 11)
 {
     affectionPhrase = "You've befriended the cat.";
 }
-else if (affection >= 100)
+else if (affection >= 7)
 {
-    affectionPhrase = "the cat fws you heavy vro.";
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 7
 if (actions == 4)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -358,7 +366,8 @@ if (actions == 4)
 //Action 8
 if (actions == 3)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -383,36 +392,37 @@ if (actions == 3)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
-if (affection == 0)
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 100)
 {
-    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
-}
-else if (affection >= 1)
-{
-    affectionPhrase = "The cat is a bit interested in you.";
-}
-else if (affection >= 4)
-{
-    affectionPhrase = "The cat is being friendlier to you.";
-}
-else if (affection >= 7)
-{
-    affectionPhrase = "You are liked by the cat";
+    affectionPhrase = "the cat fws you heavy vro.";
 }
 else if (affection >= 11)
 {
     affectionPhrase = "You've befriended the cat.";
 }
-else if (affection >= 100)
+else if (affection >= 7)
 {
-    affectionPhrase = "the cat fws you heavy vro.";
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
 //Action 9
 if (actions == 2)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -437,7 +447,7 @@ if (actions == 2)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection
+//Set affectionPhrase based on current level of affection before every action
 if (affection >= 100)
 {
     affectionPhrase = "the cat fws you heavy vro.";
@@ -466,7 +476,8 @@ else if (affection == 0)
 //Action 10
 if (actions == 1)
 {
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat. Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -495,7 +506,11 @@ if (actions == 1)
 if (actions == 0)
 {
     Console.WriteLine("SYSTEM: You have no actions left. Let's see if you befriended the cat enough to take it home.");
-    if (affection >= 11)
+    if (affection >= 100)
+    {
+        Console.WriteLine("okay buddy");
+    }
+    else if (affection >= 11)
     {
         Console.WriteLine("SUCCESS: You successfully befriended the cat!");
     }
