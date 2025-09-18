@@ -8,7 +8,7 @@ bool correctChoice = false;
 string playerAction;
 string affectionPhrase = null;
 bool satiety = false;
-
+bool played = false;
 
 //Start of game
 Console.WriteLine("DEV: Welcome to my interactive terminal game. Your task is to befriend this digital cat.");
@@ -42,16 +42,16 @@ if (affection == 0)
 if (correctChoice == true)
 {
     Console.WriteLine("SYSTEM: Congratulations. You've gained the cat's attention. Now try befriending it.");
-    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
+    Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
     Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -60,7 +60,7 @@ if (correctChoice == true)
             }
             else if (currentActionTreatsFed == 1)
             {
-                Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more.");
+                Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
                 satiety = true;
             }
@@ -75,6 +75,10 @@ if (correctChoice == true)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -84,7 +88,10 @@ if (correctChoice == true)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -120,10 +127,10 @@ if (actions == 9)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -147,6 +154,10 @@ if (actions == 9)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -156,6 +167,10 @@ if (actions == 9)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -192,10 +207,10 @@ if (actions == 8)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -219,6 +234,10 @@ if (actions == 8)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -228,6 +247,10 @@ if (actions == 8)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -267,10 +290,10 @@ if (actions == 7)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -294,6 +317,10 @@ if (actions == 7)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -303,6 +330,10 @@ if (actions == 7)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -342,10 +373,50 @@ if (actions == 6)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
+        Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
+        string treatsFed = Console.ReadLine();
+        int currentActionTreatsFed = int.Parse(treatsFed);
+        if (satiety == false)
+        {
+            if (currentActionTreatsFed == 0)
+            {
+                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+            }
+            else if (currentActionTreatsFed == 1)
+            {
+                Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more.");
+                affection++;
+                satiety = true;
+            }
+            else if (currentActionTreatsFed == 2)
+            {
+                Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
+                affection++;
+                affection++;
+                satiety = true;
+            }
+            else if (currentActionTreatsFed >= 3)
+            {
+                Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
+            }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
+        }
+        else if (satiety == true)
+        {
+            Console.WriteLine("SYSTEM: The cat didn't want to eat.");
+        }
     }
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -398,10 +469,10 @@ if (actions == 5)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -425,6 +496,10 @@ if (actions == 5)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -434,6 +509,10 @@ if (actions == 5)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -481,10 +560,10 @@ if (actions == 4)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -508,6 +587,10 @@ if (actions == 4)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -517,6 +600,10 @@ if (actions == 4)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -564,10 +651,10 @@ if (actions == 3)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -591,6 +678,10 @@ if (actions == 3)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -600,6 +691,10 @@ if (actions == 3)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -647,10 +742,10 @@ if (actions == 2)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -674,6 +769,10 @@ if (actions == 2)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -683,6 +782,10 @@ if (actions == 2)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
@@ -730,10 +833,10 @@ if (actions == 1)
     if (playerAction == "FEED")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        played = false;
         Console.WriteLine("OPTION: Choose how many treats to feed the cat. Input just the number.");
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        Console.WriteLine($"ACTION: You chose to feed the cat {treatsFed} treats.");
         if (satiety == false)
         {
             if (currentActionTreatsFed == 0)
@@ -757,6 +860,10 @@ if (actions == 1)
             {
                 Console.WriteLine($"SYSTEM: You tried to feed the cat {currentActionTreatsFed} treats. It refused.");
             }
+            else
+            {
+                Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
+            }
         }
         else if (satiety == true)
         {
@@ -766,6 +873,10 @@ if (actions == 1)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
+        Console.WriteLine($"ACTION: You used the toy to play with the cat. After playing with the cat, it seems to like you a bit more.");
+        affection++;
+        satiety = false;
+        played = true;
     }
     else if (playerAction == "PET")
     {
