@@ -42,7 +42,7 @@ if (correctChoice == true)
 {
     Console.WriteLine("SYSTEM: Congratulations. You've gained the cat's attention. Now try befriending it.");
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -53,10 +53,6 @@ if (correctChoice == true)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -85,7 +81,7 @@ else if (affection == 0)
 if (actions == 9)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -96,10 +92,6 @@ if (actions == 9)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -129,7 +121,7 @@ else if (affection == 0)
 if (actions == 8)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -140,10 +132,6 @@ if (actions == 8)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -176,7 +164,7 @@ else if (affection == 0)
 if (actions == 7)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -187,10 +175,6 @@ if (actions == 7)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -223,7 +207,7 @@ else if (affection == 0)
 if (actions == 6)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -234,10 +218,6 @@ if (actions == 6)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -283,7 +263,7 @@ else if (affection == 0)
 if (actions == 5)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -294,10 +274,6 @@ if (actions == 5)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -338,7 +314,7 @@ else if (affection == 0)
 if (actions == 4)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -349,10 +325,6 @@ if (actions == 4)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -363,11 +335,37 @@ if (actions == 4)
     actions--;
 }
 
+//Set affectionPhrase based on current level of affection before every action
+if (affection >= 100)
+{
+    affectionPhrase = "the cat fws you heavy vro.";
+}
+else if (affection >= 11)
+{
+    affectionPhrase = "You've befriended the cat.";
+}
+else if (affection >= 7)
+{
+    affectionPhrase = "You are liked by the cat";
+}
+else if (affection >= 4)
+{
+    affectionPhrase = "The cat is being friendlier to you.";
+}
+else if (affection >= 1)
+{
+    affectionPhrase = "The cat is a bit interested in you.";
+}
+else if (affection == 0)
+{
+    affectionPhrase = "The cat is paying attention to you but not particularly interested.";
+}
+
 //Action 8
 if (actions == 3)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -378,10 +376,6 @@ if (actions == 3)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -422,7 +416,7 @@ else if (affection == 0)
 if (actions == 2)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -433,10 +427,6 @@ if (actions == 2)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
@@ -477,7 +467,7 @@ else if (affection == 0)
 if (actions == 1)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat.");
-    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, SCRATCH it, or PLAY with it?");
+    Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
     playerAction = Console.ReadLine();
     if (playerAction == "FEED")
     {
@@ -488,10 +478,6 @@ if (actions == 1)
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
     else if (playerAction == "PET")
-    {
-        Console.WriteLine($"ACTION: You chose to {playerAction}.");
-    }
-    else if (playerAction == "SCRATCH")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
     }
