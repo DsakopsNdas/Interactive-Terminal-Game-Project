@@ -1,3 +1,3 @@
 # Interactive Terminal Game
 
-i'll write instructions for how to play the game here once it's actually made
+Use all caps when inputting actions and just the number (don't write "two" write "2") when inputting numbers. That's all.
