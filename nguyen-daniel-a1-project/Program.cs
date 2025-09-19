@@ -29,7 +29,7 @@ else if (firstChoice == "CROUCH")
     correctFirstChoice = true;
 }
 
-//Set affectionPhrase based on current level of affection before every action
+//Set affectionPhrase based on current level of affection before every action, only checking for higher levels when possible
 if (affection == 0)
 {
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
