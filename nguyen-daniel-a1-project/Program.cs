@@ -1,13 +1,10 @@
-﻿using System.Reflection.Emit;
-//I don't know what this is but it seems useful so I haven't deleted it, it appeared by itself
-
-//Initialize most variables here
+﻿//Initialize most variables here to ensure they're properly set when game starts
 int affection = 0;
 int actions = 10;
-bool correctChoice = false;
+bool correctFirstChoice = false;
 string playerAction;
 string affectionPhrase = null;
-bool satiety = false;
+bool sated = false;
 bool played = false;
 bool petted = false;
 
@@ -20,17 +17,17 @@ string firstChoice = Console.ReadLine();
 if (firstChoice == "STAND")
 {
     Console.WriteLine("ACTION: You chose to stand still as the cat approaches. It circles your legs and decides to stay with you for a bit.");
-    correctChoice = true;
+    correctFirstChoice = true;
 }
 else if (firstChoice == "WALK")
 {
     Console.WriteLine("ACTION: You chose to walk towards the cat. It decides to walk away from you.");
-    correctChoice = false;
+    correctFirstChoice = false;
 }
 else if (firstChoice == "CROUCH")
 {
     Console.WriteLine("ACTION: You chose to crouch down as the cat approaches you. It walks up to you and decides to stay with you for a bit.");
-    correctChoice = true;
+    correctFirstChoice = true;
 }
 
 //Set affectionPhrase based on current level of affection before every action
@@ -39,8 +36,7 @@ if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 1
-if (correctChoice == true)
+if (correctFirstChoice == true)
 {
     Console.WriteLine("SYSTEM: Congratulations. You've gained the cat's attention. Now try befriending it.");
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -54,24 +50,24 @@ if (correctChoice == true)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -82,7 +78,7 @@ if (correctChoice == true)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -90,7 +86,7 @@ if (correctChoice == true)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -106,11 +102,11 @@ if (correctChoice == true)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -125,12 +121,11 @@ if (correctChoice == true)
         Console.WriteLine("ACTION: You chose an invalid option and wasted the action.");
     }
     actions--;
-} else if (correctChoice == false)
+} else if (correctFirstChoice == false)
 {
     Console.WriteLine("SYSTEM: You have failed. The game is now terminating. Good luck next time.");
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 1)
 {
     affectionPhrase = "The cat is a bit interested in you.";
@@ -140,7 +135,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 2
 if (actions == 9)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -154,24 +148,24 @@ if (actions == 9)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -182,7 +176,7 @@ if (actions == 9)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -190,7 +184,7 @@ if (actions == 9)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -206,11 +200,11 @@ if (actions == 9)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -227,7 +221,6 @@ if (actions == 9)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 4)
 {
     affectionPhrase = "The cat is being friendlier to you.";
@@ -241,7 +234,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 3
 if (actions == 8)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -255,24 +247,24 @@ if (actions == 8)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -283,7 +275,7 @@ if (actions == 8)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -291,7 +283,7 @@ if (actions == 8)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -307,11 +299,11 @@ if (actions == 8)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -328,7 +320,6 @@ if (actions == 8)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 7)
 {
     affectionPhrase = "You are liked by the cat";
@@ -346,7 +337,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 4
 if (actions == 7)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -360,24 +350,24 @@ if (actions == 7)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -388,7 +378,7 @@ if (actions == 7)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -396,7 +386,7 @@ if (actions == 7)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -412,11 +402,11 @@ if (actions == 7)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -433,7 +423,6 @@ if (actions == 7)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 7)
 {
     affectionPhrase = "You are liked by the cat";
@@ -451,7 +440,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 5
 if (actions == 6)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -465,24 +453,24 @@ if (actions == 6)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -493,7 +481,7 @@ if (actions == 6)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -501,7 +489,7 @@ if (actions == 6)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -517,11 +505,11 @@ if (actions == 6)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -542,7 +530,6 @@ if (actions == 6)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 100)
 {
     affectionPhrase = "the cat fws you heavy vro.";
@@ -568,7 +555,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 6
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
     Console.WriteLine("OPTION: Do you choose to FEED it, PET it, or PLAY with it?");
@@ -581,24 +567,24 @@ else if (affection == 0)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -609,7 +595,7 @@ else if (affection == 0)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -617,7 +603,7 @@ else if (affection == 0)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -633,11 +619,11 @@ else if (affection == 0)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -654,7 +640,6 @@ else if (affection == 0)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 100)
 {
     affectionPhrase = "the cat fws you heavy vro.";
@@ -680,7 +665,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 7
 if (actions == 4)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -694,24 +678,24 @@ if (actions == 4)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -722,7 +706,7 @@ if (actions == 4)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -730,7 +714,7 @@ if (actions == 4)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -746,11 +730,11 @@ if (actions == 4)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -767,7 +751,6 @@ if (actions == 4)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 100)
 {
     affectionPhrase = "the cat fws you heavy vro.";
@@ -793,7 +776,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 8
 if (actions == 3)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -807,24 +789,24 @@ if (actions == 3)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -835,7 +817,7 @@ if (actions == 3)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -843,7 +825,7 @@ if (actions == 3)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -859,11 +841,11 @@ if (actions == 3)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -880,7 +862,6 @@ if (actions == 3)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 100)
 {
     affectionPhrase = "the cat fws you heavy vro.";
@@ -906,7 +887,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 9
 if (actions == 2)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -920,24 +900,24 @@ if (actions == 2)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -948,7 +928,7 @@ if (actions == 2)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -956,7 +936,7 @@ if (actions == 2)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -972,11 +952,11 @@ if (actions == 2)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -993,7 +973,6 @@ if (actions == 2)
     actions--;
 }
 
-//Set affectionPhrase based on current level of affection before every action
 if (affection >= 100)
 {
     affectionPhrase = "the cat fws you heavy vro.";
@@ -1019,7 +998,6 @@ else if (affection == 0)
     affectionPhrase = "The cat is paying attention to you but not particularly interested.";
 }
 
-//Action 10
 if (actions == 1)
 {
     Console.WriteLine($"SYSTEM: {affectionPhrase} You have {actions} actions left to befriend the cat");
@@ -1033,24 +1011,24 @@ if (actions == 1)
         petted = false;
         string treatsFed = Console.ReadLine();
         int currentActionTreatsFed = int.Parse(treatsFed);
-        if (satiety == false)
+        if (sated == false)
         {
             if (currentActionTreatsFed == 0)
             {
-                Console.WriteLine($"SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
+                Console.WriteLine("SYSTEM: Because you chose to feed the cat no treats, the action has been wasted.");
             }
             else if (currentActionTreatsFed == 1)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a bit more but it still looks a bit hungry.");
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed == 2)
             {
                 Console.WriteLine($"SYSTEM: You fed the cat {currentActionTreatsFed} treats. It likes you a lot more.");
                 affection++;
                 affection++;
-                satiety = true;
+                sated = true;
             }
             else if (currentActionTreatsFed >= 3)
             {
@@ -1061,7 +1039,7 @@ if (actions == 1)
                 Console.WriteLine("SYSTEM: You chose an invalid option and wasted the action.");
             }
         }
-        else if (satiety == true)
+        else if (sated == true)
         {
             Console.WriteLine("SYSTEM: The cat didn't want to eat.");
         }
@@ -1069,7 +1047,7 @@ if (actions == 1)
     else if (playerAction == "PLAY")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         petted = false;
         if (played == false)
         {
@@ -1085,11 +1063,11 @@ if (actions == 1)
     else if (playerAction == "PET")
     {
         Console.WriteLine($"ACTION: You chose to {playerAction}.");
-        satiety = false;
+        sated = false;
         played = false;
         if (petted == false)
         {
-            Console.WriteLine($"SYSTEM: After petting the cat, it seems to like you a bit more.");
+            Console.WriteLine("SYSTEM: After petting the cat, it seems to like you a bit more.");
             affection++;
             petted = true;
         }
@@ -1106,7 +1084,6 @@ if (actions == 1)
     actions--;
 }
 
-//Finale
 if (actions == 0)
 {
     Console.WriteLine("SYSTEM: You have no actions left. Let's see if you befriended the cat enough to take it home.");
