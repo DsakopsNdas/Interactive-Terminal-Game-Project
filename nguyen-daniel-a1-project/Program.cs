@@ -8,7 +8,6 @@ bool sated = false;
 bool played = false;
 bool petted = false;
 
-//Start of game
 Console.WriteLine("DEV: Welcome to my interactive terminal game. Your task is to befriend this digital cat.");
 Console.WriteLine("DEV: You are equipped with cat treats and a toy. Good luck.");
 Console.WriteLine("SYSTEM: The cat approaches you with a minor amount of curiosity. Try to gain its attention.");
